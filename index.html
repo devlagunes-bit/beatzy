@@ -5,53 +5,178 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Aventura Saludable con Beatzy</title>
 <meta name="description" content="¿Y si aprender de hábitos saludables se convirtiera en la aventura favorita de los niños? Síguenos en todas nuestras redes.">
+<link rel="icon" href="logo.jpg">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(170deg, #ffd93b 0%, #ffe680 45%, #fff7d1 100%);
-    display: flex; justify-content: center; align-items: flex-start;
-    padding: 48px 20px;
-    color: #23402a;
+/* Hallmark · shape: link card (one screen, kept content) · genre: playful · theme: Hum (deal 1/3, seed link-kids-healthy-habits-brand-1ab4·d3f857f0·2026-11-17·r0) · redesign: full
+ * hero: Settled, the logo sheet over the four links (stacked on phones, side by side from 56rem) · nav: none (the four links are the page) · footer: a torn mint ground carrying the sign-off · imagery: the brand logo · signature: the Beatzy logo as a cut paper sheet on a pear field, the four networks as card stock you press
+ * axes: light/rounded-sans/chromatic-yellow · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V3 · weakest: V, one screen leaves few structural axes to vary; the logo and the network colours carry the identity instead */
+/* Hallmark · waive 77 · 2 sections: the owner's logo, title, line, four network links and her sign-off, nothing more was given · a link page by request; more sections would mean invented content */
+/* Hallmark · waive 44c · on desktop the logo and links sit centred with the ground strip below · the page is built for phones from a QR code; on a phone the four links fill the first screen */
+/* Hallmark · waive 79 · the gap above the footer is the centring of a one-screen page · growing the head would push the links below the fold on phones */
+/* Hallmark · answered · 23: the pear field is Hum's one pear band and matches the yellow of the owner's logo */
+/* Hallmark · answered · font: Chillax swapped for the system rounded face (SF Rounded on iPhone), the page must not load anything from another server */
+/* Hallmark · answered · the four buttons keep each network's own colour (darkened for contrast) so a parent finds the right one at a glance; Hum's three accents stay on the page itself */
+/* Hallmark · answered · the apple in the subtitle is the owner's text, inside the sentence, not an icon; kept and flagged for her to decide */
+@import url("./tokens.css");
+@import url("./base.css");
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--grain), var(--fibre), var(--color-accent);
+}
+
+.stage {
+  flex: 1;
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.sheet {
+  margin: 0;
+  width: 11rem;
+  padding: var(--space-xs);
+  border-radius: 28px;
+  background: var(--grain), var(--fibre), var(--color-card);
+  filter: var(--shadow-paper);
+  rotate: -2.5deg;
+}
+.sheet img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-sm);
+  justify-items: center;
+  min-width: 0;
+  width: 100%;
+}
+h1 {
+  font-size: clamp(1.875rem, 5vw + 0.75rem, 3.25rem);
+  line-height: 1.04;
+  color: var(--color-ink);
+}
+.lead {
+  color: var(--color-ink-2);
+  font-weight: 500;
+  max-width: 34ch;
+}
+
+.links {
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.btn {
+  --edge: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 52px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-stock);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-on-brand);
+  text-decoration: none;
+  background: var(--grain), var(--fibre), var(--btn);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--color-on-brand) 28%, transparent),
+    0 var(--edge) 0 0 var(--btn-edge),
+    2px calc(var(--edge) + 4px) 10px -3px color-mix(in oklab, var(--color-ink) 30%, transparent);
+  transition: translate var(--dur-micro) var(--ease-snap), box-shadow var(--dur-micro) var(--ease-snap);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn img { width: 26px; height: 26px; flex-shrink: 0; }
+.btn:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 3px; }
+@media (hover: hover) {
+  .btn:hover { --edge: 7px; translate: 0 -2px; }
+}
+.btn:active { --edge: 1px; translate: 0 4px; }
+
+.yt { --btn: var(--color-yt); --btn-edge: var(--color-yt-edge); }
+.ig { --btn: var(--color-ig); --btn-edge: var(--color-ig-edge); }
+.tt { --btn: var(--color-tt); --btn-edge: var(--color-tt-edge); }
+.fb { --btn: var(--color-fb); --btn-edge: var(--color-fb-edge); }
+
+.ground {
+  position: relative;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  text-align: center;
+  background: var(--grain), var(--fibre), var(--color-mint);
+  clip-path: polygon(0.0% 0.0px, 2.5% 6.4px, 5.0% 2.0px, 7.5% 1.5px, 10.0% 5.1px, 12.5% 3.7px, 15.0% 2.3px, 17.5% 5.3px, 20.0% 5.3px, 22.5% 3.8px, 25.0% 4.8px, 27.5% 4.5px, 30.0% 5.7px, 32.5% 1.7px, 35.0% 2.6px, 37.5% 5.0px, 40.0% 4.9px, 42.5% 0.4px, 45.0% 4.8px, 47.5% 3.3px, 50.0% 6.5px, 52.5% 5.7px, 55.0% 0.9px, 57.5% 3.6px, 60.0% 6.5px, 62.5% 4.8px, 65.0% 4.5px, 67.5% 4.0px, 70.0% 6.4px, 72.5% 6.4px, 75.0% 2.6px, 77.5% 2.3px, 80.0% 5.9px, 82.5% 2.3px, 85.0% 1.1px, 87.5% 2.1px, 90.0% 3.0px, 92.5% 2.1px, 95.0% 6.6px, 97.5% 3.9px, 100.0% 5.1px, 100% 100%, 0% 100%);
+}
+.ground::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--space-xs);
+  background: var(--grain), var(--color-leaf);
+}
+.ground p {
+  margin-inline: auto;
+  font-weight: 600;
+  font-size: var(--text-lead);
+  color: var(--color-ink);
+}
+
+@media (min-width: 56rem) {
+  .stage {
+    max-width: 60rem;
+    padding: var(--space-3xl) var(--gutter) var(--space-2xl);
+    grid-template-columns: minmax(0, 24rem) minmax(0, 28rem);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    column-gap: var(--space-2xl);
+    text-align: left;
   }
-  .card { width: 100%; max-width: 420px; text-align: center; }
-  .logo {
-    width: 190px; height: 190px; margin: 0 auto 18px;
-    border-radius: 28px; object-fit: cover; display: block;
-    border: 5px solid #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  }
-  h1 { font-size: 1.6rem; line-height: 1.2; margin-bottom: 8px; color: #2d2a6e; }
-  p.sub { font-size: 1rem; margin-bottom: 30px; color: #3c5a44; }
-  a.btn {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 16px 18px; margin-bottom: 14px;
-    border-radius: 18px;
-    font-size: 1.1rem; font-weight: 700; text-decoration: none; color: #fff;
-    transition: transform .15s ease;
-  }
-  a.btn:active { transform: translateY(3px); }
-  .yt { background: #e63946; box-shadow: 0 5px 0 #b02a35; }
-  .ig { background: #c13584; box-shadow: 0 5px 0 #8f2662; }
-  .tt { background: #222;    box-shadow: 0 5px 0 #000; }
-  .fb { background: #1877f2; box-shadow: 0 5px 0 #0f5bc0; }
-  .ico { width: 26px; height: 26px; flex-shrink: 0; }
-  footer { margin-top: 28px; font-size: .85rem; color: #5b7a63; }
+  .sheet { width: 100%; padding: var(--space-sm); border-radius: 32px; }
+  .sheet img { border-radius: 22px; }
+  .copy { justify-items: start; }
+}
 </style>
 </head>
 <body>
-  <main class="card">
-    <img class="logo" src="logo.jpg" alt="La aventura saludable empieza con Beatzy">
-    <h1>La Aventura Saludable<br>con Beatzy</h1>
-    <p class="sub">Hábitos saludables convertidos en la aventura favorita de los niños 🍎</p>
+  <main class="stage">
+    <figure class="sheet">
+      <img src="logo.jpg" alt="La aventura saludable empieza con Beatzy" width="456" height="456">
+    </figure>
 
-    <a class="btn yt" href="https://www.youtube.com/@Beatzyaventurasaludable" target="_blank" rel="noopener"><img class="ico" src="icons/youtube.svg" alt="" width="26" height="26"> YouTube</a>
-    <a class="btn ig" href="https://www.instagram.com/laaventurasaludableconbeatzy" target="_blank" rel="noopener"><img class="ico" src="icons/instagram.svg" alt="" width="26" height="26"> Instagram</a>
-    <a class="btn tt" href="https://www.tiktok.com/@laaventuraconbeatzy" target="_blank" rel="noopener"><img class="ico" src="icons/tiktok.svg" alt="" width="26" height="26"> TikTok</a>
-    <a class="btn fb" href="https://www.facebook.com/share/1KCHHPQT1n/" target="_blank" rel="noopener"><img class="ico" src="icons/facebook.svg" alt="" width="26" height="26"> Facebook</a>
+    <div class="copy">
+      <h1>La Aventura Saludable<br>con Beatzy</h1>
+      <p class="lead">Hábitos saludables convertidos en la aventura favorita de los niños 🍎</p>
 
-    <footer>¡Síguenos en todas nuestras redes!</footer>
+      <ul class="links">
+        <li><a class="btn yt" href="https://www.youtube.com/@Beatzyaventurasaludable" target="_blank" rel="noopener"><img src="icons/youtube.svg" alt="" width="26" height="26">YouTube</a></li>
+        <li><a class="btn ig" href="https://www.instagram.com/laaventurasaludableconbeatzy" target="_blank" rel="noopener"><img src="icons/instagram.svg" alt="" width="26" height="26">Instagram</a></li>
+        <li><a class="btn tt" href="https://www.tiktok.com/@laaventuraconbeatzy" target="_blank" rel="noopener"><img src="icons/tiktok.svg" alt="" width="26" height="26">TikTok</a></li>
+        <li><a class="btn fb" href="https://www.facebook.com/share/1KCHHPQT1n/" target="_blank" rel="noopener"><img src="icons/facebook.svg" alt="" width="26" height="26">Facebook</a></li>
+      </ul>
+    </div>
   </main>
+
+  <footer class="ground">
+    <p>¡Síguenos en todas nuestras redes!</p>
+  </footer>
 </body>
 </html>
